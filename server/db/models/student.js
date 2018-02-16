@@ -24,7 +24,7 @@ module.exports = db.define('student', {
   name: {
     type: Sequelize.VIRTUAL,
     get() {
-      return this.firstName.concat(this.lastName)
+      return this.firstName.concat(' ' + this.lastName)
     }
   },
   campusId: {

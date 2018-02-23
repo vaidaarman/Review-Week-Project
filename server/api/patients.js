@@ -1,50 +1,50 @@
 'use strict'
 const apiRouter = require('express').Router();
-const { Student } = require('../db/models');
+const { Patient } = require('../db/models');
 
 
 module.exports = apiRouter;
 
-//get all students
+//get all patients
 apiRouter.get('/', function (req, res, next) {
-  Student.findAll()
-  .then(students => res.json(students))
+  Patient.findAll()
+  .then(patients => res.json(patients))
   .catch(next);
 });
 
-//get student by id
+//get patient by id
 apiRouter.get('/:id', (req, res, next) => {
-  Student.findById(req.params.id)
-  .then(student => {
-    return !student
-    ? res.status(404).json('student does not exist')
-    : res.json(student);
+  Patient.findById(req.params.id)
+  .then(patient => {
+    return !patient
+    ? res.status(404).json('patient does not exist')
+    : res.json(patient);
   })
   .catch(next);
 });
 
-//add new student
+//add new patient
 apiRouter.post('/', (req, res, next) => {
-  Student.create(req.body)
-  .then((newStudent) => res.json(newStudent))
+  Patient.create(req.body)
+  .then((newPatient) => res.json(newPatient))
   .catch(next);
 });
 
-//update student info for one student
+//update patient's info
 apiRouter.put('/:id', (req, res, next) => {
-  Student.findOne({
+  Patient.findOne({
     where: {
       id: req.params.id
     }
   })
-  .then(student => student.update(req.body))
+  .then(patient => patient.update(req.body))
   .then(() => res.status(204).end())
   .catch(next);
 });
 
-//delete a student
+//delete a patient
 apiRouter.delete('/:id', (req, res, next) => {
-  Student.destroy({
+  Patient.destroy({
     where: {
       id: req.params.id
     }

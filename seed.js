@@ -1,103 +1,68 @@
 const db = require('./server/db');
-const Campus = require('./server/db/models/campus');
-const Student = require('./server/db/models/student');
+const Physician = require('./server/db/models/physician');
+const Patient = require('./server/db/models/patient');
 
 
-const campuses = [{
-  name: 'Terra',
-  description: 'The best JavaScript program on earth, strongest network and top outcomes in the tech capital of the world.'
+const physicians = [{
+  name: 'Emma Daisy, MD',
+  specialty: 'Family Medicine, Geriatrics',
+  description: 'Dr. Emma Daisy is Board Certified in Family Medicine and Geriatrics. She graduated from Northwestern Feinberg School of Medicine and completed her family medicine residency at Northwestern, training at a federally qualified health center in the Humboldt Park neighborhood. She completed a fellowship in geriatrics at the University of Chicago. She is interested in providing high-quality primary care to patients of all ages, throughout their lives.  Her training in Geriatrics allows her to focus on the unique health needs of older adults within their established medical home.'
 }, {
-  name: 'Luna',
-  description: 'We are a leading JavaScript school the area.'
+  name: 'Laurie Carrier, MD',
+  specialty: 'Family Medicine, Psychiatry',
+  description: 'Dr. Laurie Carrier oversees clinical operations at Heartland Health Centers. She completed her residency at the University of Cincinnati in family medicine and psychiatry where she served as chief resident.  Dr. Carrier began her work at Heartland Health Centers in 2009 as the Director of Behavioral Health care and has been implementing integrated care throughout HHC and with community partners. Dr. Laurie Carrier has an appointment at Swedish Covenant Hospital and an appointment as an Assistant Professor at Northwestern University Feinberg’s School of Medicine, Department of Community and Family Practice. Her interests include preventative health, global health, and integrated care.'
 }, {
-  name: 'Venus',
-  description: 'Become a JavaScript expert in our newest campus.'
+  name: 'Kristin B. Alexander, LCSW',
+  specialty: 'Behavioral Health',
+  description: 'Kristin B. Alexander is a board certified Licensed Clinical Social Worker. She received her master’s in social work from the University of Illinois at Chicago. Kristin has experience in crisis intervention, brief therapy, and case management. Her professional interest includes working with children, families and adults from culturally diverse backgrounds.'
 }, {
-  name: 'Sol',
-  description: 'Learn JavaScript in the largest campus of our academy.'
+  name: 'Scott Feldman, MD',
+  specialty: 'Psychiatry',
+  description: 'Dr. Scott Feldman is a board certified general Psychiatrist and a child and adolescent Psychiatrist. He received his medical degree from the University of Illinois Chicago College of Medicine-Rockford, and has been in practice for over 21 years. His professional interest includes research and family therapy.'
 }];
 
-const students = [
+const patients = [
   {
-    campusId: 1,
-    firstName: 'Sirius',
-    lastName: 'Canis Major',
-    email: 'SiriusCM@java.com',
-    gpa: 3.9
+    firstName: 'Mike',
+    lastName: 'Monroe',
+    email: 'MMonroe@yahoo.com',
+    dob: 19650817,
+    pastHistory: 'Hypertension and diabetes',
+    physicianId: 1,
   },
   {
-    campusId: 2,
-    firstName: 'Vega',
-    lastName: 'Lyra',
-    email: 'VegaL@java.com',
-    gpa: 4
+    firstName: 'Max',
+    lastName: 'Bennet',
+    email: 'MBennet@gmail.com',
+    dob: 19731023,
+    pastHistory: 'Dyslipidemia, CAD, HTN.',
+    physicianId: 1,
   },
   {
-    campusId: 1,
-    firstName: 'Deneb',
-    lastName: 'Cygnus',
-    email: 'DenebC@java.com',
-    gpa: 3.5
+    firstName: 'Cindy',
+    lastName: 'Allen',
+    email: 'CAllen@yahoo.com',
+    dob: 19680106,
+    pastHistory: 'Hypertension and diabetes.',
+    physicianId: 2,
   },
   {
-    campusId: 4,
-    firstName: 'Canopus',
-    lastName: 'Carina',
-    email: 'CanopusC@java.com',
-    gpa: 3.8
+    firstName: 'Zoe',
+    lastName: 'Rickman',
+    email: 'ZRickaman@gmail.com',
+    dob: 19820315,
+    pastHistory: 'none',
+    physicianId: 3,
   },
-  {
-    campusId: 4,
-    firstName: 'Polaris',
-    lastName: 'Ursa Minor',
-    email: 'PolarisUM@java.com',
-    gpa: 3.7
-  },
-  {
-    campusId: 1,
-    firstName: 'Antares',
-    lastName: 'Scorpius',
-    email: 'AntaresS@java.com',
-    gpa: 4
-  },
-  {
-    campusId: 2,
-    firstName: 'Bellatrix',
-    lastName: 'Orion',
-    email: 'BellatrixO@java.com',
-    gpa: 3.9
-  },
-  {
-    campusId: 2,
-    firstName: 'Mintaka',
-    lastName: 'Orion',
-    email: 'MintakaO@java.com',
-    gpa: 3.8
-  },
-  {
-    campusId: 1,
-    firstName: 'Aldebaran',
-    lastName: 'Taurus',
-    email: 'AldebaranT@java.com',
-    gpa: 3.9
-  },
-  {
-    campusId: 1,
-    firstName: 'Altair',
-    lastName: 'Aquila',
-    email: 'AltairA@java.com',
-    gpa: 4
-  },
-
 ];
 
 const seed = () =>
-  Promise.all(campuses.map(campus =>
-    Campus.create(campus))
+  Promise.all(physicians.map(physician =>
+    Physician.create(physician))
   )
     .then(() =>
-      Promise.all(students.map(student =>
-        Student.create(student))
+      Promise.all(patients.map(patient =>
+        Patient.create(patient))
       )
     );
 

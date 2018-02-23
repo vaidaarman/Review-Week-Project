@@ -1,18 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 export default function Navbar() {
 
   return (
-    <div>
+    <div className="navbar navbar-default navbar-static-top">
       <button>
-        <NavLink className="btn" to="/home">HOME</NavLink>
-      </button>
-      <button>
-        <NavLink className="btn" to="/campuses">CAMPUSES</NavLink>
-      </button>
-      <button>
-        <NavLink className="btn" to="/students">STUDENTS</NavLink>
+        <NavLink className="btn" to="/">HOME</NavLink>
+        <NavLink className="btn" to="/physicians">PHYSICIANS</NavLink>
+        <NavLink className="btn" to="/patients">PATIENTS</NavLink>
       </button>
     </div>
   )

@@ -1,50 +1,50 @@
 'use strict'
 const apiRouter = require('express').Router();
-const { Campus } = require('../db/models');
+const { Physician } = require('../db/models');
 
 
 module.exports = apiRouter;
 
-//get all campuses
+//get all physicians
 apiRouter.get('/', (req, res, next) => {
-  Campus.findAll()
-  .then(campuses => res.json(campuses))
+  Physician.findAll()
+  .then(physicians => res.json(physicians))
   .catch(next);
 });
 
-//find campus by id
+//find a physician by id
 apiRouter.get('/:id', (req, res, next) => {
-  Campus.findById(req.params.id)
-  .then(campus => {
-    return !campus
-    ? res.status(404).json("campus does not exist")
-    : res.json(campus);
+  Physician.findById(req.params.id)
+  .then(physician => {
+    return !physician
+    ? res.status(404).json("this physician does not exist")
+    : res.json(physician);
   })
   .catch(next);
 });
 
-//add new campus
+//add a new physician
 apiRouter.post('/', (req, res, next) => {
-  Campus.create(req.body)
-  .then((newCampus) => res.json(newCampus))
+  Physician.create(req.body)
+  .then((newPhysician) => res.json(newPhysician))
   .catch(next);
 });
 
-//update campus info for one campus
+//update physician's info
 apiRouter.put('/:id', (req, res, next) => {
-  Campus.findOne({
+  Physician.findOne({
     where: {
       id: req.params.id
     }
   })
-  .then(campus => campus.update(req.body))
+  .then(physician => physician.update(req.body))
   .then(() => res.status(204).end())
   .catch(next);
 });
 
-//delete a campus
+//delete a physician
 apiRouter.delete('/:id', (req, res, next) => {
-  Campus.destroy({
+  Physician.destroy({
     where: {
       id: req.params.id
     }

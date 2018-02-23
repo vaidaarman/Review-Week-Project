@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 
 export default function Home() {
   return (
-    <div>
-      <h3>Welcome to the Margaret Hamilton Interplanetary Academy of JavaScrip</h3>
+    <div className="homePage">
+      <h3>UPTOWN MEDICAL CENTER</h3>
       <div id="jpg">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Interplanetary_Superhighway.jpg" />
+        <img src="http://truthstar.tgt5cps4e32fytbrgae.netdna-cdn.com/wp-content/uploads/2015/12/vaastu-health.jpg" />
       </div>
     </div>
   )

@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const db = require('../index');
 
-module.exports = db.define('student', {
+module.exports = db.define('patient', {
   firstName: {
     type: Sequelize.STRING,
     allowNull: false,
@@ -16,10 +16,12 @@ module.exports = db.define('student', {
     isUnique: true,
     allowNull: false,
   },
-  gpa: {
-    type: Sequelize.FLOAT(2, 1),
+  dob: {
+    type: Sequelize.STRING,
     allowNull: false,
-    validate: { min: 0.1, max: 4.0 }
+  },
+  pastHistory: {
+    type: Sequelize.STRING,
   },
   name: {
     type: Sequelize.VIRTUAL,
@@ -27,7 +29,7 @@ module.exports = db.define('student', {
       return this.firstName.concat(' ' + this.lastName)
     }
   },
-  campusId: {
+  physicianId: {
     type: Sequelize.INTEGER,
     allowNull: false
   }

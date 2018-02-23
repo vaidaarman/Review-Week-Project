@@ -1,10 +1,14 @@
 const Sequelize = require('sequelize');
 const db = require('../index');
 
-const image = 'https://upload.wikimedia.org/wikipedia/commons/3/33/Interplanetary_Superhighway.jpg'
+const image = 'http://www.freeclipart.pw/uploads/doctor-clip-art--images--free-for-commercial-use--page-2-3.png'
 
-module.exports = db.define('campus', {
+module.exports = db.define('physician', {
   name: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
+  specialty: {
     type: Sequelize.STRING,
     allowNull: false,
   },
